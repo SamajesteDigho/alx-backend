@@ -38,15 +38,8 @@ class Server:
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
         start, end = index_range(page=page, page_size=page_size)
+        dataset = self.dataset()
         data = []
-        with open(file="data_file.csv") as file:
-            line = file.readline().strip()
-            i = 1
-            while line != "":
-                line = file.readline().strip()
-                if i <= start:
-                    i += 1
-                elif start <= i < end + 1:
-                    data.append(line.split(sep=","))
-                    i += 1
+        if end < len(dataset):
+            data = dataset[start:end]
         return data
