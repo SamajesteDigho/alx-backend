@@ -9,6 +9,7 @@ class BasicCache(BaseCaching):
     """ BasicCache class inheriting from BaseCaching """
 
     def __init__(self):
+        """ Initialization of the object """
         super().__init__()
 
     def put(self, key, item):
