@@ -1,0 +1,4 @@
+Flask==3.0.0
+pytz
+flask_babel==2.0.0
+werkzeug==3.0.1
