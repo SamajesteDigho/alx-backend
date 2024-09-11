@@ -13,6 +13,7 @@ class Config:
 
 
 def get_locale():
+    """ Here the timezone collector """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
