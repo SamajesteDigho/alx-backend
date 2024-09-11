@@ -17,4 +17,5 @@ babel = Babel(app, locale_selector=get_locale)
 
 @app.route("/")
 def index():
+    """ Here the initial root target """
     return render_template("0-index.html")
