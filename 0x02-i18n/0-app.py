@@ -9,4 +9,5 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    """ Here the initial root target """
     return render_template("0-index.html")
