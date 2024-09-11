@@ -4,7 +4,12 @@ Here the module description file
 """
 from flask import Flask, render_template, request
 from flask_babel import Babel
-from config import Config
+
+
+class Config:
+    """ Babel configuraion class """
+    LANGUAGES = ["en", "fr"]
+    TIMEZONE = "UTC"
 
 
 def get_locale():
