@@ -16,7 +16,6 @@ class Config:
 def get_locale():
     """ Get the local """
     lang = request.args.get('locale')
-    print("Language")
     if lang:
         return lang
     return request.accept_languages.best_match(app.config['LANGUAGES'])
