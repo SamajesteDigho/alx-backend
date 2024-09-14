@@ -3,7 +3,7 @@
 Here the module description file
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel, localeselector
+from flask_babel import Babel
 
 
 class Config:
@@ -13,12 +13,6 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
-babel = Babel(app)
-
-
-@localeselector
 def get_locale():
     """ Get the local """
     lang = request.args.get('locale')
@@ -26,6 +20,12 @@ def get_locale():
     if lang:
         return lang
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app, locale_selector=get_locale)
+
 
 @app.route("/")
 def index():
