@@ -35,6 +35,7 @@ users = {
 
 def get_user(login_as: int = None) -> Union[Dict, None]:
     """ Getting the user """
+    global users
     if login_as in users.keys():
         return users[login_as]
     return None
@@ -51,5 +52,4 @@ def before_request():
 @app.route("/")
 def index():
     """ Here the initial root target """
-    print("Collected user: {}".format(g.get(name="user")))
     return render_template("5-index.html")
