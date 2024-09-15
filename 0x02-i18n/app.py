@@ -2,9 +2,10 @@
 """
 Here the module description file
 """
+from datetime import datetime
 from typing import Dict, Union
-from flask import Flask, render_template, request, g, session
-from flask_babel import Babel
+from flask import Flask, render_template, request, g
+from flask_babel import Babel,  format_datetime
 import pytz
 
 
@@ -75,7 +76,13 @@ def before_request():
     g.setdefault(name="user", default=user)
 
 
+@app.template_filter('format_datetime_with_timezone')
+def format_datetime_with_timezone(value):
+    return format_datetime(value)
+
+
 @app.route("/")
 def index():
     """ Here the initial root target """
-    return render_template("7-index.html")
+    now = datetime.now()
+    return render_template("index.html", now=now)

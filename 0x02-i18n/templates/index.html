@@ -19,6 +19,7 @@
         {{ _('not_logged_in') }}
     </p>
     {% endif %}
+    {{ _('current_time_is', current_time=now | format_datetime_with_timezone) }}
 </body>
 
 </html>
