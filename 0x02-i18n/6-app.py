@@ -19,8 +19,8 @@ def get_locale() -> str:
     lang = request.args.get('locale')
     if lang:
         locale = lang
-    elif 'locale' in session:
-        locale = session['locale']
+    elif g.user:
+        locale = g.user['locale']
     elif request.accept_languages.best_match(app.config['LANGUAGES']):
         locale = request.accept_languages.best_match(app.config['LANGUAGES'])
 
