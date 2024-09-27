@@ -19,7 +19,6 @@ class Config:
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
-# babel = Babel.init_app(app=app, locale_selector=, timezone_selector=)
 
 
 @babel.localeselector
@@ -56,6 +55,8 @@ def get_timezone():
         return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
+babel = Babel.init_app(app=app, locale_selector=get_locale,
+                       timezone_selector=get_timezone)
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
