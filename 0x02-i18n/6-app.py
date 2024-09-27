@@ -3,7 +3,7 @@
 Here the module description file
 """
 from typing import Dict, Union
-from flask import Flask, render_template, request, g, session
+from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
 
@@ -14,6 +14,12 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
+app = Flask(__name__)
+app.config.from_object(Config)
+babel = Babel(app)
+
+
+@babel.localeselector
 def get_locale() -> str:
     """ Get the local """
     lang = request.args.get('locale')
@@ -30,9 +36,6 @@ def get_locale() -> str:
         return app.config['BABEL_DEFAULT_LOCALE']
 
 
-app = Flask(__name__)
-app.config.from_object(Config)
-babel = Babel(app, locale_selector=get_locale)
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
     2: {"name": "Beyonce", "locale": "en", "timezone": "US/Central"},
