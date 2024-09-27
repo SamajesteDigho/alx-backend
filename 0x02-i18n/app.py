@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Dict, Union
 from flask import Flask, render_template, request, g
 from flask_babel import Babel,  format_datetime
-import flask_babel as BABEL
+import flask_babel as babel
 import pytz
 
 
@@ -17,7 +17,7 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-@BABEL.localeselector
+@babel.localeselector
 def get_locale() -> str:
     """ Get the local """
     lang = request.args.get('locale')
