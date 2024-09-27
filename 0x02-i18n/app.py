@@ -19,6 +19,7 @@ class Config:
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
+# babel = Babel.init_app(app=app, locale_selector=, timezone_selector=)
 
 
 @babel.localeselector
