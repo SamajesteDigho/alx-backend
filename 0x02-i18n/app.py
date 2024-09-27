@@ -21,7 +21,6 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale():
     """ Get the local """
     lang = request.args.get('locale')
@@ -55,7 +54,7 @@ def get_timezone():
         return app.config['BABEL_DEFAULT_TIMEZONE']
 
 
-babel = Babel.init_app(app=app, locale_selector=get_locale,
+babel.init_app(app=app, locale_selector=get_locale,
                        timezone_selector=get_timezone)
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
