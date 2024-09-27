@@ -17,7 +17,7 @@ class Config:
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-@BABEL.localselector
+@BABEL.localeselector
 def get_locale() -> str:
     """ Get the local """
     lang = request.args.get('locale')
